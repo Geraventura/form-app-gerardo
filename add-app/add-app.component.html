@@ -1,0 +1,33 @@
+<html>
+    <h1>Formulario</h1>
+<body>
+    <div class="card-body">
+    <form>
+        <fieldset>
+            <label>Identificador</label><br>
+            <input type="number" id="id" name="id" [(ngModel)]="id"  required/><br>
+            <label>Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" [(ngModel)]="nombreLista"   placeholder="nombre" required /><br>
+            <label>Genero:</label><br>
+            <input type="radio" id="femenino" [(ngModel)]="genero" value="femenino" name="femenino"/>Femenino<br>
+            <input type="radio" id="masculino" [(ngModel)]="genero" value="masculino" name="masculino" checked="checked"/>Masculino
+        </fieldset>
+        <fieldset>
+        <label>Fecha de Nacimiento:</label><br>
+        <input type="number" id="fechanacimiento" [(ngModel)]="fechanacimiento" name="fechanacimiento" placeholder="Ingrese un año entre 1980-2010" value="1980" min="1980" required/><br><br>
+        <button type="submit" value="" (click)="onButtonClick()">Agregar</button>
+        </fieldset>
+    </form>
+    </div>
+    <br><br>
+    <div class="card-body">
+        {{mensaje}}
+        <div class="card-body">
+            <p *ngFor="let item of nombres; index as i">
+                {{i}} Registro: {{item}}
+            </p>
+          </div>
+    </div>
+    
+</body>
+</html>

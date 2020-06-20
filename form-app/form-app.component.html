@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Formulario</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='main.js'></script>
+</head>
+ 
+<body>
+    <form [formGroup]="FormGanado" (ngSubmit)="registrar(FormGanado.value)" novalidate >
+        
+            <h3>Formulario</h3>
+            
+                <legend><br>Registro de Ganado</legend>
+                <div>
+                
+                    <label><strong>Fecha de nacimiento: </strong><input type="date" id="fechaNa" class="form-control"  formControlName="fecha" placeholder="Selecciona la Fecha" [(ngModel)]="fechaNa" name="fechaNa"  /></label>
+                </div>
+                <div class="err" *ngIf="FormGanado.get('fecha').errors && FormGanado.get('fecha').dirty">
+                    <p *ngIf="FormGanado.get('fecha').hasError('required')">*</p>
+                    <p *ngIf="FormGanado.get('fecha').hasError('minlength')">dd-mmm-aaaa</p>
+                    </div>
+                
+                <div>
+                
+                    <label><strong>Altura: </strong><input type="number" id="altura" class="form-control"  formControlName="alt" placeholder="Altura" [(ngModel)]="altura" name="alturaG"  /></label>
+                </div>
+                
+                <div class="err" *ngIf="FormGanado.get('alt').errors && FormGanado.get('alt').dirty">
+                    <p *ngIf="FormGanado.get('alt').hasError('required')">*</p>
+                    <p *ngIf="FormGanado.get('alt').hasError('minlength')">Minimo 2 characteres</p>
+                    </div>
+        
+             <div>
+                 <label><br><strong>Peso:</strong><input type="number"  id="peso"  class="form-control"  [(ngModel)]="peso" formControlName="cpeso" placeholder="Peso kg"  name="pesoG"></label><br>
+                </div>
+                <div class="err" *ngIf="FormGanado.get('cpeso').errors && FormGanado.get('cpeso').dirty">
+                    <p *ngIf="FormGanado.get('cpeso').hasError('required')">Campo Obligatorio</p>
+                    <p *ngIf="FormGanado.get('cpeso').hasError('minlength')">minimo 2 caracteres</p>
+                    </div>
+                    <div>
+                     <label><strong>Dirección:</strong>
+                        <input type="street-address" id="direccion" [(ngModel)]="direccion"  class="form-control"  formControlName="dir" placeholder="Ingresa una direccion" name="mydir"> </label>
+                    </div>
+                    <div class="err" *ngIf="FormGanado.get('dir').errors && FormGanado.get('dir').dirty">
+                        <p *ngIf="FormGanado.get('dir').hasError('required')">Campo Obligatorio</p>
+                        <p *ngIf="FormGanado.get('dir').hasError('minlength')">Minimo 20 caracteres</p>
+                        </div><br>
+                     
+                     <div>
+                     <label><strong>Sexo:</strong>
+                     <input type="sex:" id="sexo" [(ngModel)]="sexo"  class="form-control"  formControlName="sexoG"  name="sexG"> </label></div><br>
+                     
+                     <div class="err" *ngIf="FormGanado.get('sexoG').errors && FormGanado.get('sexoG').dirty">
+                        <p *ngIf="FormGanado.get('sexoG').hasError('required')">Campo Obligatorio</p>
+                        <p *ngIf="FormGanado.get('sexoG').hasError('minlength')">Minimo 5 caracteres</p>
+                        </div><br>
+                     
+                     <div>
+                     <label><strong>Contacto del Vendedor:</strong>
+                    <input type="tel" id="tel" [(ngModel)]="tel"  class="form-control"  formControlName="telefono" placeholder="Telefono" name="telV"> </label></div><br>
+                     
+                    <div class="err" *ngIf="FormGanado.get('telefono').errors && FormGanado.get('telefono').dirty">
+                        <p *ngIf="FormGanado.get('telefono').hasError('required')">Campo Obligatorio</p>
+                        <p *ngIf="FormGanado.get('telefono').hasError('minlength')">Minimo y Maximo 10 caracteres</p>
+                        </div><br>
+                    
+            
+        <button  type="submit" class="btn btn-success" [disabled]="FormGanado.invalid" (click)="onSubmit()" >Registrar</button>
+        
+    </form>
+    <div>
+        <p *ngFor="let item of ganado, index as i">
+            {{i}} Registro de Ganado: {{item}}
+        </p>
+    </div>
+</body>
+</html>
+
+
+
+
+
